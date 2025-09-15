@@ -37,9 +37,9 @@ How does the rest of the codebase usually get the UserID? Middleware? Is it part
 
 Simply tell the LLM exactly how you want it to do it.
 
-````
+```
 Create a method in @handlers.go that is called HandleGetUserJSON(). This codebase always fetches users by the ID using Get{model}ByID(db, id) in @queries.go. The db will always come from the global Config in @config.go by using GetActiveDB() *sql.DB , that handles race conditions. The userID will always be in the body of the HTTP request as '{ userID: %d }' use the stdlib for this. then return the user with (*model.User) func AsJSON(). In @router.go we are using Chi and it should look like m.Get("/user", HandleGetUserJSON()). put it below the rest of the routes. The status will be 200 if okay, otherwise use LogHTTPError in @logging.go 
-````
+```
 
 There are a lot of established patterns in this project as you can tell based on the prompt. We have `chi` routing, custom logging, embedded JSON marshalling/unmarshalling and specific way to do db access. Although very basic, the scope of this prompt has stretched out into various files and expectations about how the data is manipulated that LLM cannot know off the rip without any guidance.  
 
