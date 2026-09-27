@@ -13,7 +13,7 @@ API design benefits the agent just as much as you, if not more so. The AI writes
 
 ## Human-friendly architecture is Agent-friendly architecture 
 
-The point is not “fewer lines of code.” The point is explicit, easy-to-use interfaces. clear contracts and boundaries/defined constraint,, the agent doesn’t have to guess or hallucinate how the system works. Agent Software factories don't solve problems the same way that Java OOP AbstractBuilderPatternFactoryDAO() don't solve problems the same way that C++ inherited header files and `namespace::` insanity makes problems **HARDER TO SOLVE**, not easier.
+The point is not “fewer lines of code.” The point is explicit, easy-to-use interfaces. clear contracts and boundaries/defined constraint,, the agent doesn’t have to guess or hallucinate how the system works. Agent Software factories don't solve problems the same way that Java OOP `AbstractBuilderPatternFactoryDAO()` don't solve problems the same way that C++ inherited header files and `namespace::` insanity makes problems **HARDER TO SOLVE**, not easier.
 
 Bad interfaces make agents: 
 1. inspect half the repo ($$$)
