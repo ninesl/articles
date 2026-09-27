@@ -2,21 +2,21 @@ The more I learn about API design I find that the best architecture for a human 
 
 A well designed API allows your agents to understand your code easier, therefore less $ spent on wasted reasoning tokens. Maybe you can bear the [cognitive load of your codebase](https://github.com/zakirullin/cognitive-load/), but there is no way to know what limits your agent has. Context windows change from model to model, and performance of these models can vary drastically between releases and the harness/tooling around it.
 
-[CPU thrashing](https://en.wikipedia.org/wiki/Thrashing_(computer_science)), [constant context-switching](https://pubmed.ncbi.nlm.nih.gov/11518143/), and [agent thrashing](https://www.anthropic.com/research/multiagent-systems) behave in the same way. It’s all wasted work which risk missing flaws in the software we build. Code still runs on a processor with limited registers, people have limited mental load/capacity, [agents have limited context and experience long conversation drift](https://arxiv.org/abs/2604.13061).
+[CPU thrashing](https://en.wikipedia.org/wiki/Thrashing_(computer_science)), [agent thrashing](https://www.anthropic.com/research/multiagent-systems), and  [constant context-switching](https://pubmed.ncbi.nlm.nih.gov/11518143/) behave in the same way. It’s all wasted work which risk missing flaws in the software we build. Code still runs on a processor with limited registers, people have limited mental load/capacity, [agents have limited context and can experience conversation drift](https://arxiv.org/abs/2604.13061).
 
-### The current mess
+### The code matters more than it ever did
 
-We all are reading a LOT of code in this new AI age. If we aren't writing code anymore, [we still need to ensure we don't have a spaghetti tangled mess, just for our end user's sake](https://www.youtube.com/watch?v=tD5NrevFtbU). Your module's behaviors should be easily inferred from how the API itself is implemented. You can quickly grok if the AI is giving you decent results as huge vibed-coded diffs scroll by.
+We all are reading a LOT of code in this new AI age. If we aren't writing code anymore, [we still need to ensure we don't have a spaghetti tangled mess, just for our end user's sake](https://www.youtube.com/watch?v=tD5NrevFtbU). A module's behavior should be easily inferred from how the API is literally implemented. You need to quickly grok if the AI is giving decent results as huge vibed-coded diffs scroll by.
 
-I keep thinking about how all this feels very similar to the how [complexity caused software crisis in the late 60s](https://en.wikipedia.org/wiki/Software_crisis). We have all these new tools for making more software than ever, but there is a bottleneck creating reliabile, performant, extensible, testability/provability. 
+I keep thinking about how all this feels very similar to the how [complexity caused the software crisis in the late 60s](https://en.wikipedia.org/wiki/Software_crisis). There are more tools to create more software than ever. The bottleneck is creating reliabile, performant, extensible, testable, provable code. What it has been for the last 60 years. I'm willing to bet this will be the same for the next 60.
 
-Back then everyone was writing COBOL and FORTRAN clusterfucks; now we're generating AI clusterfucks. We cannot make better software without being able to wrangle the sheer scale of entropy caused by the LLMs. Simplifing your already complex system should be priority #0 so the next human AND the next agent and ESPECIALLY the next human using an agent has a chance of writing the proper code.
+Back then everyone was writing COBOL and FORTRAN clusterfucks; now we're generating AI vibe-coded clusterfucks. We cannot make better software without being able to wrangle the sheer scale of entropy caused by LLMs. 
 
-Why make what is already really difficult, creating reliable software, harder than it already is?
+Simplifying a complex system should be priority #0 so the next human AND the next agent and ESPECIALLY the next human using an agent has a chance of writing the proper code. Why make what is already really difficult: creating reliable software, harder than it already is?
 
 ### Human-friendly architecture is Agent-friendly architecture 
 
-An easy-to-use interface is an easy-to-infer interface. Clearer contracts and boundaries deter agents from having to guess or hallucinate how your system works. 
+An easy-to-use interface is an easy-to-infer interface. Clearer contracts and boundaries deter agents from having to guess or hallucinate how your system works.
 
 Bad interfaces: 
 - agents inspect half the repo ($ on tokens)
@@ -25,9 +25,9 @@ Bad interfaces:
 - complexity encourages hack-y glue code (SLOP)
 - create restrivice scaffolding tests that over-enforce behavior (SLOP)
 
-> In my experience the tests AI agents (something like ChatGPT's Astra or Anthrophic's Fable) makes sure it's writing the correct architecture by using test-scaffolding that feels like scafoldding a skyscraper with a house of cards.
-
 This is an extremely frustrating situation for a human-in-the-loop. At best you're constantly handholding which REDUCES productivity. The more slop code in your repo the more money you're spending on tokens.
+
+> In my experience the tests AI agents (something like ChatGPT's Astra or Anthrophic's Fable) makes sure it's writing the correct architecture by using test-scaffolding that feels like scafoldding a skyscraper with a house of cards.
 
 Easy interfaces:
 - functions are named in a way so expected behavior is obvious (inferred)
