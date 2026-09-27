@@ -4,37 +4,41 @@ A well designed API allows your agents to understand your code easier, therefore
 
 [CPU thrashing](https://en.wikipedia.org/wiki/Thrashing_(computer_science)), [constant context-switching](https://pubmed.ncbi.nlm.nih.gov/11518143/), and [agent thrashing](https://www.anthropic.com/research/multiagent-systems) behave in the same way. It’s all wasted work which risk missing flaws in the software we build. Code still runs on a processor with limited registers, people have limited mental load/capacity, [agents have limited context and experience long conversation drift](https://arxiv.org/abs/2604.13061).
 
-## Human-friendly architecture is Agent-friendly architecture 
-
-An easy-to-use interface is an easy-to-infer interface. Clearer contracts and boundaries deters your agent from having to guess or hallucinate how the system works. 
-
-Bad interfaces make agents: 
-1. inspect half the repo ($$$)
-2. forced to infer conventions via reasoning ($$$)
-3. prompts less likely to get desired outcomes (SLOP)
-4. complexity encourages hack-y glue code (SLOP)
-5. (some agents do this) makes restrictive test scaffolding 
-
-This is an extremely frustrating human-in-the-loop. At best you're constantly handholding which can REDUCE productivity.
-
-What does an easy to use interface look like?
-- functions are named in a way so expected behavior is obvious
-- agents likely next token is to call the obvious thing (less $$$)
-- easily remove those scaffolding tests without breaking something
-
-Obvious interfaces mean less guessing, less slop, fewer retries and tokens. They can make cheaper models useful by having defined API constraints and expectations.
+### The current mess
 
 We all are reading a LOT of code in this new AI age. If we aren't writing code anymore, [we still need to ensure we don't have a spaghetti tangled mess, just for our end user's sake](https://www.youtube.com/watch?v=tD5NrevFtbU). Your module's behaviors should be easily inferred from how the API itself is implemented. You can quickly grok if the AI is giving you decent results as huge vibed-coded diffs scroll by.
 
-[Locality of behavior](https://four.htmx.org/essays/locality-of-behaviour/), grug-brained simplicity, and easily inferred interfaces help you understand without struggling to keep the whole system in your head. See [Carson Gross's talk on API design at BSDC 2025](https://www.youtube.com/watch?v=dTstnhS3moc). "Complexity very very bad"
+I keep thinking about how all this feels very similar to the how [complexity caused software crisis in the late 60s](https://en.wikipedia.org/wiki/Software_crisis). We have all these new tools for making more software than ever, but there is a bottleneck creating reliabile, performant, extensible, testability/provability. 
 
-Agent software factories don't solve problems. Java OOP `AbstractBuilderPatternFactoryDAO()` and C++ `.h` issues/`namespace::` insanity make problems **HARDER TO SOLVE**. You need to avoid redundant abstractions so your agent doesn't see a bunch of slop and want to make more slop.
+Back then everyone was writing COBOL and FORTRAN clusterfucks; now we're generating AI clusterfucks. We cannot make better software without being able to wrangle the sheer scale of entropy caused by the LLMs. Simplifing your already complex system should be priority #0 so the next human AND the next agent and ESPECIALLY the next human using an agent has a chance of writing the proper code.
 
-### The current mess
+Why make what is already really difficult, creating reliable software, harder than it already is?
 
-I keep thinking about how all this feels very similar to the 60s software crisis. We have all these new tools for making more software but there is a bottleneck with reliability, scalability, testability ESP with agents introduced. It's the same underlying issue: we are producing complexity faster than we can understand it.
+### Human-friendly architecture is Agent-friendly architecture 
 
-Back then everyone was writing assembly clusterfucks; now we're generating AI clusterfucks at 100x speed. Simplify the system so the next human AND the next agent and ESPECIALLY the next human using an agent has a chance of writing the proper code.
+An easy-to-use interface is an easy-to-infer interface. Clearer contracts and boundaries deter agents from having to guess or hallucinate how your system works. 
+
+Bad interfaces: 
+- agents inspect half the repo ($ on tokens)
+- agents infer conventions via reasoning ($ on tokens)
+- prompts less likely have desired outcomes (SLOP)
+- complexity encourages hack-y glue code (SLOP)
+- create restrivice scaffolding tests that over-enforce behavior (SLOP)
+
+> In my experience the tests AI agents (something like ChatGPT's Astra or Anthrophic's Fable) makes sure it's writing the correct architecture by using test-scaffolding that feels like scafoldding a skyscraper with a house of cards.
+
+This is an extremely frustrating situation for a human-in-the-loop. At best you're constantly handholding which REDUCES productivity. The more slop code in your repo the more money you're spending on tokens.
+
+Easy interfaces:
+- functions are named in a way so expected behavior is obvious (inferred)
+- encourage agents next token is more likely to call the obvious thing (less $$$)
+- remove those scaffolding tests without breaking something (trust the code)
+
+Obvious interfaces mean less guessing, less slop, fewer retries and tokens. They can make cheaper models useful by having defined API constraints and expectations. [Locality of behavior](https://four.htmx.org/essays/locality-of-behaviour/), [grug-brained simplicity](https://grugbrain.dev/) help you understand your system without struggling to keep all of it's details and edgecases in your head. See [Carson Gross's talk on API design at BSDC 2025](https://www.youtube.com/watch?v=dTstnhS3moc). 
+
+> *"Complexity very very bad"*
+
+Agent software factories don't solve problems. Java OOP `AbstractBuilderPatternFactoryDAO()` and C++ `.h` issues/`namespace::` insanity make problems **HARDER TO SOLVE**. You need to avoid redundant or unuseful abstractions so your agent doesn't see a bunch of slop and want to make more slop.
 
 ### What are the types of tools and techniques we should adapt
 
@@ -45,8 +49,6 @@ If we're never outrunning vibe-coded nonsense, why not invest in implementing sc
 Once you define the API your contract to the user and the constraints for your system are picked. You can be more confident when rewriting the guts and still reliably test the contracts. If your agent changes or adds bloat to your interfaces every time you touch an implementation detail, the implementation isn't "obvious" enough for the LLM. And more than likely you don't know what the code is supposed to look like.
 
 Naming is hard, but it's VERY important when determining the proper abstractions we need for easy to use interfaces. If I want to reliably prompt the agent to create features in the way I expect, the more obvious the design of my API and libraries used the more likely the next token will be the right one.
-
-> In my experience the tests AI agents (esp something like ChatGPT's Astra) want to make will make your entire architecture be enforced by skyscraper-scaffolding built with a house of cards.
 
 I've been using this ergonomics-focused tool called [Dagger](https://dagger.io) for my CICD pipelines recently. The Dagger API is designed in a way that your entire development pipeline becomes obvious from its actual programmatic implementation. The deployment of your app could live in the repo itself or the specific deployment environment's job to handle your repo's runtime instead of putting out fires in `Dockerfile` and `compose.yml` scripts. Every building block you're given has a usually very obvious job because every API function just does what it says it does.
 
@@ -64,4 +66,6 @@ Hashimoto's [whiteboard defense](https://x.com/mitchellh/status/2100249348345057
 
 A valuable engineer should develop their own heuristics that help them avoid anything that isn't solving business problems or benefiting users. We break down big problems into smaller problems, understand what tradeoffs we make as we solve each small problem in the greater system.
 
-> something esoteric and anthromorphozing to the lossy search stocastic parrot
+> something esoteric and anthromorphozing the lossy search stocastic parrot
+
+> ["*being competent is fun*"](https://x.com/ThePrimeagen/status/1990609052917813304) *- ThePrimeagen*
