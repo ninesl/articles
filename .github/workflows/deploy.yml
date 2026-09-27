@@ -15,15 +15,34 @@ concurrency:
 jobs:
   publish:
     runs-on: [self-hosted, linux, x64, articles]
+    env:
+      DAGGER_ENGINE: container+podman://dagger-engine-v1.0.0-beta.13
+      REGISTRY: registry.ninescoding.com
+      APPLICATION_NAME: ninescoding
     steps:
       - uses: actions/checkout@v5
         with:
           fetch-depth: 0
           persist-credentials: false
 
-      - name: Update checkout and restart site
+      - name: Update articles checkout
         run: |
           dest="$HOME/prod/ninescoding/articles"
           mkdir -p "$dest"
           rsync -a --delete "$GITHUB_WORKSPACE/" "$dest/"
-          podman restart ninescoding
+
+      - name: Redeploy site
+        run: |
+          "$HOME/.local/bin/dagger" -W github.com/ninesl/daggerer@master api call \
+            deploy \
+            --registry="$REGISTRY" \
+            --app-name="$APPLICATION_NAME" \
+            --registry-username="$(<"$HOME/secrets/runner_registry_user")" \
+            --registry-password="file://$HOME/secrets/runner_registry_token" \
+            --ssh-key="file://$HOME/secrets/ssh_key" \
+            --known-hosts="file://$HOME/secrets/known_hosts" \
+            --ssh-target="debian@host.containers.internal" \
+            --ssh-target-port=1337 \
+            --deploy-directory="prod/$APPLICATION_NAME" \
+            --deploy-container-runtime=podman \
+            --deploy-values="APP_IMAGE=$REGISTRY/$APPLICATION_NAME:latest"
