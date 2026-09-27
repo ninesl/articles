@@ -1,0 +1,29 @@
+name: Publish articles
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publish-articles
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: [self-hosted, linux, x64, articles]
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Update checkout and restart site
+        run: |
+          dest="$HOME/prod/ninescoding/articles"
+          mkdir -p "$dest"
+          rsync -a --delete "$GITHUB_WORKSPACE/" "$dest/"
+          podman restart ninescoding
