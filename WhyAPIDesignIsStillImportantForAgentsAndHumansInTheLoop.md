@@ -42,11 +42,11 @@ Agent software factories don't solve problems. Java OOP `AbstractBuilderPatternF
 
 Once you define the API your contract to the agent and the constraints it's expecting for your system are picked. If your agent wants to add bloat to your interfaces every time you touch an implementation detail, the implementation isn't "obvious" enough for the LLM. Naming is hard, but it's VERY important when determining the proper abstractions you need for easy-to-use interfaces. If I want to reliably prompt the agent to create features in the way I expect, the more obvious the design of my API and libraries used the more likely the next token will be the right one.
 
-If we're never outrunning vibe-coded nonsense, why not invest in implementing scaffolding and pipelines that check the complexity, security risks, "obviousness", or "easy-to-use-ness" of whatever code developers are blindly shipping? Couldn't you just sandbox it and create exhaustive architecture tests? A more [deterministic AI tool like Jev](https://typesafe.ai/blog/introducing-system-one-models-and-jev) with or without MCPs could be the backbone of this kind of CICD pipeline.
-
 How do you even write regression tests without instantly locking yourself into a specific design? A project like [SQLite benefits from its extremely comprehensive testing coverage](https://www.youtube.com/watch?v=V_qzqY1bb7) because its behavior has been defined and shouldn't change.
 
-> ["*A wide and flat architecture is all about planning for growth and change, and then fostering the conditions that make change easy.*" - Evan DeMond
+If we're never outrunning vibe-coded nonsense, why not invest in implementing scaffolding and pipelines that check the complexity, security risks, "obviousness", or "easy-to-use-ness" of whatever code developers are blindly shipping? Couldn't you just sandbox it and create exhaustive architecture tests? A more [deterministic AI tool like Jev](https://typesafe.ai/blog/introducing-system-one-models-and-jev) with or without MCPs could be the backbone of this kind of CICD pipeline.
+
+> "*A wide and flat architecture is all about planning for growth and change, and then fostering the conditions that make change easy.*" - Evan DeMond
 
 Light code duplication or using flatter and wider abstractions are less cumbersome for a developer today versus any other time in history. We want to have less of a burden on our cognitive load when reading the code, trusting the code, and [grokking](https://en.wikipedia.org/wiki/Grok#Adoption_and_modern_use) the behavior of code. You want to avoid secretly inherited behaviors int the APIs you are using. We want to mitgate being blindsided by how a library works or an agent's implementation in a diff.
 
