@@ -1,18 +1,14 @@
-The more I learn about API design I find that the best architecture for a human is exactly the same way we want to design our APIs for agents.
+### Code matters more than it ever did
+
+I keep thinking about how all this feels very similar to the how [complexity caused the software crisis in the late 60s](https://en.wikipedia.org/wiki/Software_crisis). There are more tools to create more software than ever. The bottleneck is creating reliabile, performant, extensible, testable, provable code. What it has been for the last 60 years. I'm willing to bet this will be the same for the next 60. Back then everyone was writing COBOL and FORTRAN clusterfucks; now we're generating AI vibe-coded clusterfucks. We cannot make better software without being able to wrangle the sheer scale of entropy caused by LLMs. 
 
 A well designed API allows your agents to understand your code easier, therefore less $ spent on wasted reasoning tokens. Maybe you can bear the [cognitive load of your codebase](https://github.com/zakirullin/cognitive-load/), but there is no way to know what limits your agent has. Context windows change from model to model, and performance of these models can vary drastically between releases and the harness/tooling around it.
 
 [CPU thrashing](https://en.wikipedia.org/wiki/Thrashing_(computer_science)), [agent thrashing](https://www.anthropic.com/research/multiagent-systems), and  [constant context-switching](https://pubmed.ncbi.nlm.nih.gov/11518143/) behave in the same way. It’s all wasted work which risk missing flaws in the software we build. Code still runs on a processor with limited registers, people have limited mental load/capacity, [agents have limited context and can experience conversation drift](https://arxiv.org/abs/2604.13061).
 
-### Code matters more than it ever did
-
-I keep thinking about how all this feels very similar to the how [complexity caused the software crisis in the late 60s](https://en.wikipedia.org/wiki/Software_crisis). There are more tools to create more software than ever. The bottleneck is creating reliabile, performant, extensible, testable, provable code. What it has been for the last 60 years. I'm willing to bet this will be the same for the next 60.
-
-Back then everyone was writing COBOL and FORTRAN clusterfucks; now we're generating AI vibe-coded clusterfucks. We cannot make better software without being able to wrangle the sheer scale of entropy caused by LLMs. 
-
 [Hashimoto's whiteboard defense analogy](https://x.com/mitchellh/status/2100249348345057389?s=20) plays a huge role in my philosophy when designing the implementation or ergonomics of an API. If an agent wrote the code and I ship it, can I explain why the system works, what could break from a change, why this design was picked in the first place? If I can't, is there really any way for me to verify the software does what I say it does? A green checkmark on the PR doesn't mean you know why it works. LLMs will never "know" why it works either.
 
-We all are reading a LOT more code in this new AI age. If we aren't writing code anymore, [we still need to ensure you're not building a spaghetti-tangled mess so your users don't stop using your app from how slow it is](https://www.youtube.com/watch?v=tD5NrevFtbU). How the code actually works under the hood still matter even when you are moving abstraction layers up.
+We all are reading a LOT more code in this new AI age. If we aren't writing code anymore, [we still need to ensure you're not building a spaghetti-tangled mess so your users don't stop using your app from how slow it is](https://www.youtube.com/watch?v=tD5NrevFtbU). How the code actually works under the hood still matters even when you are moving abstraction layers up.
 
 ### Human-friendly architecture is Agent-friendly architecture 
 
