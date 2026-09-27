@@ -31,7 +31,17 @@ jobs:
           mkdir -p "$dest"
           rsync -a --delete "$GITHUB_WORKSPACE/" "$dest/"
 
+      - name: Read current lifetime clicks
+        id: clicks
+        run: |
+          count=$(curl -fsSL --max-time 1 https://ninescoding.com/count) || true
+          echo "count=${count:-0}" >> "$GITHUB_OUTPUT"
+
       - name: Redeploy site
+        env:
+          DEPLOY_VALUES: |
+            APP_IMAGE=registry.ninescoding.com/ninescoding:latest
+            INITIAL_COUNT=${{ steps.clicks.outputs.count }}
         run: |
           "$HOME/.local/bin/dagger" -W github.com/ninesl/daggerer@master api call \
             deploy \
@@ -45,4 +55,4 @@ jobs:
             --ssh-target-port=1337 \
             --deploy-directory="prod/$APPLICATION_NAME" \
             --deploy-container-runtime=podman \
-            --deploy-values="APP_IMAGE=$REGISTRY/$APPLICATION_NAME:latest"
+            --deploy-values="$DEPLOY_VALUES"
