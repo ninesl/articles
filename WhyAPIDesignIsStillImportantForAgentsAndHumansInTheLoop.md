@@ -58,12 +58,8 @@ You also get the added benefit of quickly understanding code you wrote in the pa
 
 I've been using this ergonomics-focused tool called [Dagger](https://dagger.io) for my CICD pipelines recently. The Dagger API is designed in a way that your entire development pipeline becomes obvious from its actual programmatic implementation. The deployment of your app could live in the repo itself or the specific deployment environment's job to handle your repo's runtime instead of putting out fires in `Dockerfile` and `compose.yml` scripts. Every building block you're given has a usually very obvious job because every API function just does what it says it does.
 
-Dagger, in my opinion, is a good example of an API that can be both easy-to-use for humans and agents.
+Dagger is a good example of an API that can be both easy-to-use for humans *and* agents.
 
 ### In conclusion
 
-I believe that no amount of tooling can deterministically tell you what caused the LLM to hallucinate that endpoint to begin with. You can isolate a poorly designed, error prone system perfectly. Unfortunately it's still a poorly designed, error prone system.
-
-A valuable engineer should develop their own heuristics that help them avoid anything that isn't solving business problems or benefiting users. We break down big problems into smaller problems, understand what tradeoffs we make as we solve each small problem in the greater system.
-
-A module's behavior should be easily inferred from how the API is literally implemented. You need to be able to quickly grok if the LLM model is giving decent results as huge vibed-coded diffs scroll by. Simplifying a complex system should be priority #0 so the next human, the next agent, and ESPECAILLY the next human using an agent have a chance of writing the correct implementation. 
+I believe that no amount of tooling can deterministically tell you what caused the LLM to hallucinate that endpoint to begin with. You can isolate a poorly designed, error prone system perfectly, unfortunately it's still a poorly designed, error prone system. A valuable engineer should develop their own heuristics that help them avoid wasting time not solving business problems or benefiting users. We break down big problems into smaller problems, understand what tradeoffs we make as we solve each small problem in the greater system. A module's behavior should be easily inferred from how the API is literally implemented. You need to be able to quickly grok if the LLM model is giving decent results as huge vibed-coded diffs scroll by. Simplifying a complex system should be priority #0 so the next human, the next agent, and ESPECAILLY the next human using an agent have a chance of writing the correct implementation. 
