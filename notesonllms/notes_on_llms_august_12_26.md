@@ -32,16 +32,16 @@ or if the thing requries it (or you want a truly handcrafted experience or look 
 
 the tech debt being built up from crappy codebases bloats context and bloats prompt accuracy/good output
 THE SIMPLER THE DESIGN, THE SIMPLER THE AGENT CAN DO STUFF
-CODE HAS MATTERED MORE THAN EVER BC YOU CAN SAVE SO MUCH TIME IF YOU ACTUALLY KNOW HOW THE CODE IS SUPPOSED T OFUCKING RUN!!!! (we love you golang and your shitty repetive CONSTITENT syntax)
+CODE HAS MATTERED MORE THAN EVER BC YOU CAN SAVE SO MUCH TIME IF YOU ACTUALLY KNOW HOW THE CODE IS SUPPOSED T ORUN!!!! (we love you golang and your shitty repetive CONSTITENT syntax)
 we love that every package looks the same
 
 from the gameprogrammer world its SO easy to add bespoke features if you keep everything with cache locale, etc.
-The fucking database guys do this too with query optimaztion and btree index re-engineering etc, why can't our JS frameworks and webdev software? We're stuck with JS bc the browser is the most widely adapted way to ship software ppl use, all the business implementation and architecture becomes what you SHOULD care about 
+The database guys do this too with query optimaztion and btree index re-engineering etc, why can't our JS frameworks and webdev software? We're stuck with JS bc the browser is the most widely adapted way to ship software ppl use, all the business implementation and architecture becomes what you SHOULD care about 
 im not saying you become a software architect or cloud specialist or something, but if you like to use agents, build data strcutures and systems (That's what programming is. Designing systems to perform a pre-configured set of tasks) if you make this easier for the llm, the better the output is (because of the constraints)
 MORE constraints, MORE guardrails, etc. This is an arguement for 0.0 temperature too, which I may start playing with after having written all of this and thinking about it more
 
 better tooling for agent code completion, different test suites or harnesses, actual good MCP, maybe RAG specific things?
-think graphs/sqlite db may be better than native filesystem for agents, or at least agents could be trained or harness can still be reworked and standards should still be upgraded (looking at you SKILL.md, the worst fucking pattern in the world jfc)
+think graphs/sqlite db may be better than native filesystem for agents, or at least agents could be trained or harness can still be reworked and standards should still be upgraded (looking at you SKILL.md, the worst pattern in the world)
 `all models know how to do in 2026 is python sed and lie`
 it's really cool that agents can use cli tools (esp ffmpeg combinations i'll never want to understand) but it likely is NOT the best way to approach this
 think cursor has the most adapted product using this line of thinking, this is also why they are training their own LLMs, they have likely cool as tooling for web devs. feels like this is the new way for wordpress guys, I even know a webdev in this world who's whole job is prompting cursor. (i mean i do the same thing lowkey, just sometimes I'm making a few `.go` files myself lol)
@@ -52,7 +52,7 @@ it's sophisticated google indexing. All it cost was all the IP theft in the worl
 The LLM is to the programmer what the table saw was to the carpenter. However, a carpenter's table saw won't start chiseling away at the foundation randomly. There's safety mechanisms (finger detection) that our Big Tech AI Lab overlords don't want you use, and instead are trying to sell you another table saw to fix the broken table saw.
 
 My opinion is other than token sellers trying to sell more tokens to fix the problems tokens create, the top engineers at these labs ARE NOT GOOD AT BUILDING ENTERPRISE SOFTWARE LIKE THIS
-You mean it 'escaped' it's 'sandbox' bc you told it to break out of it's 'sandbox' and you forgot a flag in the .yml that would have prevented this? It sounds like you wanted it to break out for marketing man. IDK why this is such a big moment when I feel like this could have been done 6 months ago with the shittier models? It took them DAYS to figure it out? Hugging face used an AGENT to read the .log? What'd you do fucking `cat` the .log into the LLM? Did you even want to use `jq` or `sort` lmfao like come on guys. THERE ARE SO MANY SECURITY MONITORING TOOLS FUCKING USE THEM FUCKERS YOU ARE MAKING THE WORLD LESS SAFE
+You mean it 'escaped' it's 'sandbox' bc you told it to break out of it's 'sandbox' and you forgot a flag in the .yml that would have prevented this? It sounds like you wanted it to break out for marketing man. IDK why this is such a big moment when I feel like this could have been done 6 months ago with the shittier models? It took them DAYS to figure it out? Hugging face used an AGENT to read the .log? What'd you do `cat` the .log into the LLM? Did you even want to use `jq` or `sort` lmfao like come on guys. THERE ARE SO MANY SECURITY MONITORING TOOLS USE THEM YOU ARE MAKING THE WORLD LESS SAFE
 Also why anthropic is trying to steal your homework? dario feels bad bc their new hires aren't in active AI psychosis and just in it for 'the money' (million of dollars in TC lmfaooo)
 All of this was predicted by many people, but it's all playing out so much faster than I could have imagined.
 I think this is global market pressure from the Iran War and Trump crony-ism forced investors to ask the labs 'uhhh okay we actually need to start making money now this totally unforeseeeable consequence of getting MAGA admin is biting us in the ass'
