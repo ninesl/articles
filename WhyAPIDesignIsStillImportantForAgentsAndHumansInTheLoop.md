@@ -66,4 +66,4 @@ No amount of tooling can deterministically tell you what caused the LLM to hallu
 
 A module's behavior should be easily inferred from how the API is literally named or used. The developer needs to be able to quickly grok if the LLM is giving decent results as huge vibe-coded diffs scroll in their terminal.
 
-Easy-to-infer APIs are easy-to-use APIs. APIs should be implemented in a way so it's likely the next human, the next agent, and ESPECIALLY the next human using an agent has a chance a decent PR.
+Easy-to-infer APIs are easy-to-use APIs. APIs should be implemented in a way so it's likely the next human, the next agent, and ESPECIALLY the next human using an agent has a chance at a decent PR.
