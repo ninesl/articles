@@ -64,6 +64,6 @@ A valuable engineer develops their own heuristics that help them avoid wasting t
 
 No amount of tooling can deterministically tell you what caused the LLM to hallucinate that endpoint to begin with. You can isolate a poorly designed, error prone system perfectly. Unfortunately, it's still a poorly designed, error prone system. 
 
-A module's behavior should be easily inferred from how the API is literally implemented. The developer needs to be able to quickly grok if the LLM is giving decent results as huge vibe-coded diffs scroll in their terminal.
+A module's behavior should be easily inferred from how the API is literally named or used. The developer needs to be able to quickly grok if the LLM is giving decent results as huge vibe-coded diffs scroll in their terminal.
 
 Easy-to-infer APIs are easy-to-use APIs. APIs should be implemented in a way so it's likely the next human, the next agent, and ESPECIALLY the next human using an agent has a chance a decent PR.
