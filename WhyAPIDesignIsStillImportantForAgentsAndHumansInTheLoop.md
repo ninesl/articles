@@ -1,6 +1,6 @@
 ### Code matters more than it ever did
 
-I keep thinking about how all this feels very similar to how [complexity caused the software crisis in the late 60s](https://en.wikipedia.org/wiki/Software_crisis). There are more tools to create more software than ever. The bottleneck is creating reliable, performant, extensible, testable, provable code. What it has been for the last 60 years. I'm willing to bet this will be the same for the next 60. Back then everyone was writing COBOL and FORTRAN clusterfucks, now we're generating AI vibe-coded clusterfucks. We cannot make better software without being able to wrangle the sheer scale of entropy caused by LLMs.
+I keep thinking about the [software crisis of the late 60s](https://en.wikipedia.org/wiki/Software_crisis). We have more tools to make more software than ever, but we are running into the same issues as always. Making code reliable, performant, extensible, testable, provable. It was the bottleneck 60 years ago, and I'm willing to bet it will be for the next 60. Back then we wrote COBOL and FORTRAN clusterfucks. Now we generate AI vibe-coded clusterfucks. If we can't wrangle the sheer scale of entropy LLMs create, how are we supposed to make better software?
 
 A well designed API allows your agents to understand your code easier and spend less money on wasted reasoning tokens. Maybe you can bear the [cognitive load of your codebase](https://github.com/zakirullin/cognitive-load/), but there is no way to know what limits your agent has. Context windows change from model to model, and performance of these models can vary drastically between releases and the harness or tooling around it.
 
@@ -46,7 +46,7 @@ How do you even write regression tests without instantly locking yourself into a
 
 If we're never outrunning vibe-coded nonsense, why not invest in implementing scaffolding and pipelines that check the complexity, security risks, "obviousness", or "easy-to-use-ness" of whatever code developers are blindly shipping? Couldn't you just sandbox it and create exhaustive architecture tests? A more [deterministic AI tool like Jev](https://typesafe.ai/blog/introducing-system-one-models-and-jev) with or without MCPs could be the backbone of this kind of CICD pipeline.
 
-> "*A wide and flat architecture is all about planning for growth and change, and then fostering the conditions that make change easy.*" - Evan DeMond
+> ["*A wide and flat architecture is all about planning for growth and change, and then fostering the conditions that make change easy.*" - Evan DeMond](https://www.evandemond.com/programming/wide-and-flat)
 
 Light code duplication or using flatter and wider abstractions are less cumbersome for a developer today versus any other time in history. We want to have less of a burden on our cognitive load when reading the code, trusting the code, and [grokking](https://en.wikipedia.org/wiki/Grok#Adoption_and_modern_use) the behavior of code. You want to avoid secretly inherited behaviors in the APIs you are using. We want to mitigate being blindsided by how a library works or an agent's implementation in a diff.
 
