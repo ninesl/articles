@@ -8,7 +8,7 @@ A well designed API allows your agents to understand your code easier and spend 
 
 [Hashimoto's whiteboard defense analogy](https://x.com/mitchellh/status/2100249348345057389?s=20) plays a huge role in my philosophy when designing the implementation or ergonomics of an API. If an agent wrote the code and I ship it, can I explain why the system works, what could break from a change, why this design was picked in the first place? If I can't, is there really any way for me to verify the software does what I say it does? A green checkmark on the PR doesn't mean you know why it works. LLMs will never "know" why it works either.
 
-We all are reading a LOT more code in this new AI age. If we aren't writing code anymore, [we still need to ensure you're not building a spaghetti-tangled mess so your users don't stop using your app from how slow it is](https://www.youtube.com/watch?v=tD5NrevFtbU). How the code actually works under the hood still matters even when you are moving abstraction layers up.
+We all are reading a LOT more code in this new AI age. If we aren't writing code anymore, we still need to [ensure you're not building a spaghetti-tangled mess](https://www.youtube.com/watch?v=GC-0tCy4P1U) so your users don't [stop using your app from how slow it is](https://www.youtube.com/watch?v=tD5NrevFtbU). How the code actually works under the hood still matters even when you are moving abstraction layers up.
 
 ### Human-friendly architecture is Agent-friendly architecture 
 
